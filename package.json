@@ -1,0 +1,7 @@
+{
+  "name": "serverless-framework-sample",
+  "version": "1.0.0",
+  "description": "Example demonstrates how to setup serverless framework ci/cd with python",
+  "author": "Santosh",
+  "license": "MIT"
+}

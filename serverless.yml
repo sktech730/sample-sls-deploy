@@ -1,0 +1,15 @@
+service: serverless-framework-sample
+
+frameworkVersion: ">=1.2.0 <2.0.0"
+
+provider:
+  name: aws
+  runtime: python3.8 # or python3.7, supported as of November 2018
+
+functions:
+  currentTime:
+    handler: handler.endpoint
+    events:
+      - http:
+          path: ping
+          method: get
