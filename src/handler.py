@@ -35,3 +35,7 @@ def read_lines(file):
     for line in f:
         lines.append(line.strip('\n').strip('\r\n'))
     return lines
+# Bad Code, not explicit
+def make_complex(*args):
+    x, y = args
+    return dict(**locals())
