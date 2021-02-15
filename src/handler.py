@@ -1,11 +1,15 @@
 import json
 import datetime
+import subprocess
+
 import boto3
 
 
 def endpoint(event, context):
     filepath = 'demo.tx'
     read_lines(filepath)
+    make_complex(10, 12)
+    execute("ls")
     source_ddb = boto3.client('dynamodb', 'us-east-1')
     destination_ddb = boto3.client('dynamodb', 'us-west-1')
     sync_ddb_table(source_ddb, destination_ddb)
@@ -35,7 +39,16 @@ def read_lines(file):
     for line in f:
         lines.append(line.strip('\n').strip('\r\n'))
     return lines
+
+
 # Bad Code, not explicit
 def make_complex(*args):
     x, y = args
     return dict(**locals())
+
+# Bad Code, Not secure
+def execute(cmd):
+    try:
+        retcode = subprocess.call(cmd, shell=True)
+    except OSError as e:
+        print("error")
