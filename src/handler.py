@@ -7,6 +7,9 @@ import boto3
 
 def endpoint(event, context):
     filepath = 'demo.tx'
+    dict = {}
+    dict_usage_with_try_except(dict)
+    dict_usage_with_setdefault(dict)
     read_lines(filepath)
     make_complex(10, 12)
     execute("ls")
