@@ -46,9 +46,24 @@ def make_complex(*args):
     x, y = args
     return dict(**locals())
 
+
 # Bad Code, Not secure
 def execute(cmd):
     try:
         retcode = subprocess.call(cmd, shell=True)
     except OSError as e:
         print("error")
+
+
+# Bad code, Using setDefault or Keyerror Exception to handle missing key error
+def dict_usage_with_try_except(dict):
+    try:
+        sampleval = dict['samplekey']
+    except KeyError as exp:
+        print("Key not found")
+
+
+def dict_usage_with_setdefault(dict):
+    dict.setdefault('missing_key', 'default value')
+    val = dict['missing_key']
+    print(val)
